@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>LOS HERMANOS | Événements</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Montserrat', sans-serif; background: #0b0b0b; color: #f2f2f2; line-height:1.6; }
+
+    header { height:60px; background:#111; display:flex; align-items:center; padding:0 20px; position: sticky; top:0; z-index:100; }
+    header nav a { color:#e63946; margin-right:20px; text-decoration:none; font-weight:500; }
+    header nav a:hover { text-decoration:underline; }
+
+    #onlineStatus { position: fixed; top:20px; right:20px; background:#111; color:#fff; padding:8px 12px; border-radius:20px; font-weight:bold; font-size:0.9rem; display:flex; align-items:center; box-shadow:0 0 10px rgba(0,0,0,0.5); z-index:200; }
+    .greenDot { width:12px; height:12px; background:#28a745; border-radius:50%; margin-right:8px; }
+
+    .hero {
+      height: 50vh;
+      background: url('https://i.ibb.co/wZXpX3zn/gggg.jpg') center/cover no-repeat;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+      position:relative;
+    }
+    .hero::after { content:''; position:absolute; inset:0; background: rgba(0,0,0,0.65); }
+    .hero h1 { position:relative; color:#e63946; font-size:3.5rem; z-index:1; text-shadow:0 0 20px rgba(230,57,70,0.9); margin-bottom:10px; }
+    .hero p { position:relative; z-index:1; font-size:1.4rem; text-shadow:0 0 10px rgba(0,0,0,0.6); }
+
+    section { padding:60px 10%; }
+    h2 { color:#e63946; margin-bottom:20px; text-align:center; }
+
+    .event-card { background: linear-gradient(145deg,#111,#1a1a1a); border-left: 4px solid #e63946; padding:25px; border-radius:8px; margin-bottom:25px; transition: all 0.3s ease; }
+    .event-card:hover { transform:translateY(-5px); box-shadow: 0 5px 20px rgba(230,57,70,0.4); }
+
+    .fade-up { opacity:0; transform:translateY(40px); transition: all 0.8s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    footer { background:#000; text-align:center; padding:30px; color:#777; font-size:0.9rem; }
+
+    @media(max-width:768px){section{padding:40px 5%;} .hero h1{font-size:2.5rem;} .hero p{font-size:1rem;}}
+  </style>
+</head>
+<body>
+
+<div id="onlineStatus"><span class="greenDot"></span> Personnes connectées : 5</div>
+
+<header>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="evenements.html">Événements</a>
+    <a href="guide-illegal.html">Guide Illégal</a>
+    <a href="#events">Candidature</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero fade-up">
+  <h1>Événements LOS HERMANOS</h1>
+  <p>Ne manque aucun événement RP et participe avec la famille</p>
+</div>
+
+<!-- Événements -->
+<section class="fade-up" id="events">
+  <h2 class="glow">Événements à venir</h2>
+
+  <div class="event-card fade-up">
+    <h3>🔫 Entraînement RP</h3>
+    <p>Session d'entraînement pour améliorer la cohésion et la stratégie du gang.</p>
+  </div>
+
+  <div class="event-card fade-up">
+    <h3>🚗 Convoi et patrouille</h3>
+    <p>Sortie RP pour marquer le territoire et montrer la présence du gang.</p>
+  </div>
+
+  <div class="event-card fade-up">
+    <h3>🎬 Scénario RP</h3>
+    <p>Événement scénarisé avec d'autres groupes pour enrichir l'histoire RP.</p>
+  </div>
+
+  <div class="event-card fade-up">
+    <h3>💰 Braquage RP</h3>
+    <p>Organisation d’un braquage planifié pour tester vos compétences stratégiques en équipe.</p>
+  </div>
+
+  <div class="event-card fade-up">
+    <h3>🏎️ Courses clandestines</h3>
+    <p>Événement de course illégale pour dominer les rues et gagner des récompenses RP.</p>
+  </div>
+</section>
+
+<footer>© LOS HERMANOS — GTA RP | La famille avant tout.</footer>
+
+<script>
+  // Fade-up animation
+  const elements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold:0.2 });
+  elements.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
