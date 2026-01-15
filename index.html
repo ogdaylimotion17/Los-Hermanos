@@ -4,38 +4,25 @@
   <meta charset="UTF-8" />
   <title>LOS HERMANOS | GTA RP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Los Hermanos - Communauté GTA RP. Rejoignez nos événements et postulez pour notre gang RP.">
+  <meta name="description" content="Los Hermanos - Rejoins notre gang GTA RP et participe à des événements exclusifs.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Montserrat', sans-serif; background: #0b0b0b; color: #f2f2f2; line-height: 1.6; }
 
-    header { height: 60px; background: #111; display: flex; align-items: center; padding: 0 20px; }
+    header { height: 60px; background: #111; display: flex; align-items: center; padding: 0 20px; position: sticky; top: 0; z-index: 100; }
     header nav a { color: #e63946; margin-right: 20px; text-decoration: none; font-weight: 500; }
     header nav a:hover { text-decoration: underline; }
 
     .hero {
-      height: 60vh;
+      height: 70vh;
       background: url('https://i.ibb.co/wZXpX3zn/gggg.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
       position: relative;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    .hero h1 {
-      position: relative;
-      color: #e63946;
-      font-size: 4rem;
-      z-index: 1;
-      text-shadow: 0 0 10px rgba(230,57,70,0.8);
-    }
+    .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+    .hero h1 { position: relative; color: #e63946; font-size: 4rem; z-index: 1; text-shadow: 0 0 20px rgba(230,57,70,0.9); margin-bottom: 15px; }
+    .hero p { position: relative; z-index: 1; font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.6); }
 
     section { padding: 60px 10%; }
     h1,h2,h3 { color: #e63946; margin-bottom: 20px; }
@@ -46,9 +33,9 @@
     .glow { text-shadow: 0 0 10px rgba(230,57,70,0.8); }
 
     .event-card { background: linear-gradient(145deg, #111, #1a1a1a); border-left: 4px solid #e63946; padding: 25px; border-radius: 8px; margin-bottom: 25px; transition: all 0.3s ease; }
-    .event-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(230,57,70,0.3); }
+    .event-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(230,57,70,0.4); }
 
-    form { background: #111; padding: 25px; border-radius: 8px; margin-top: 25px; }
+    form { background: #111; padding: 25px; border-radius: 8px; margin-top: 25px; box-shadow: 0 5px 20px rgba(230,57,70,0.2); }
     fieldset { border: 1px solid #333; padding: 15px; margin-bottom: 20px; border-radius: 6px; }
     legend { padding: 0 10px; font-weight: bold; color: #e63946; }
     label { display: block; margin-bottom: 10px; }
@@ -57,11 +44,15 @@
 
     footer { background: #000; text-align: center; padding: 30px; color: #777; font-size: 0.9rem; }
 
-    a.cta, button.cta { background: #e63946; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; border: none; cursor: pointer; }
+    a.cta, button.cta { background: #e63946; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; border: none; cursor: pointer; font-weight: 500; }
     a.cta:hover, button.cta:hover { background: #ff4d5a; }
+
+    .highlight { color: #e63946; font-weight: bold; }
+    .intro-text { margin-bottom: 40px; font-size: 1.2rem; text-align: center; }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
       section { padding: 40px 5%; }
     }
   </style>
@@ -72,15 +63,19 @@
   <nav>
     <a href="index.html">Accueil</a>
     <a href="evenements.html">Événements</a>
+    <a href="#formulaire">Candidature</a>
   </nav>
 </header>
 
 <div class="hero fade-up">
   <h1>LOS HERMANOS</h1>
+  <p>Rejoins la famille et vis le RP comme jamais auparavant</p>
+  <a href="#formulaire" class="cta">Postule maintenant</a>
 </div>
 
 <section class="fade-up">
   <h2 class="glow">Événements à venir</h2>
+  <p class="intro-text">Notre gang est actif chaque semaine ! Viens participer aux événements RP et vivre l’action en famille.</p>
   <div class="event-card">
     <h3>🔫 Entraînement RP</h3>
     <p>Session d'entraînement pour améliorer la cohésion et la stratégie du gang.</p>
@@ -95,9 +90,9 @@
   </div>
 </section>
 
-<section class="fade-up">
-  <h2 class="glow">Formulaire de Candidature LOS HERMANOS</h2>
-  <p>Remplis le formulaire puis clique sur « Copier la candidature » et colle-la dans un ticket Discord sur notre serveur.</p>
+<section class="fade-up" id="formulaire">
+  <h2 class="glow">Formulaire de Candidature</h2>
+  <p class="intro-text">Remplis le formulaire ci-dessous et clique sur <span class="highlight">"Valider la candidature"</span>. Ta candidature sera copiée et Discord s’ouvrira automatiquement pour nous rejoindre !</p>
 
   <form id="applicationForm">
     <fieldset>
@@ -152,7 +147,7 @@
       <label>Pourquoi toi et pas un autre ?<br><textarea name="why" rows="3" required></textarea></label>
     </fieldset>
 
-    <button type="button" id="copyButton" class="cta">Copier la candidature</button>
+    <button type="button" id="validateButton" class="cta">Valider la candidature</button>
   </form>
 
   <textarea id="generatedText" style="width:100%; height:250px; margin-top:15px;" readonly placeholder="La candidature générée apparaîtra ici..."></textarea>
@@ -163,7 +158,7 @@
 </footer>
 
 <script>
-  // IntersectionObserver pour fade-up
+  // Fade-up animation
   const elements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -175,12 +170,12 @@
   }, { threshold: 0.2 });
   elements.forEach(el => observer.observe(el));
 
-  // Formulaire candidature
+  // Formulaire + ouverture Discord
   const form = document.getElementById('applicationForm');
-  const copyButton = document.getElementById('copyButton');
+  const validateButton = document.getElementById('validateButton');
   const generatedText = document.getElementById('generatedText');
 
-  copyButton.addEventListener('click', () => {
+  validateButton.addEventListener('click', () => {
     const data = new FormData(form);
     const text = `
 Présentation RP
@@ -219,12 +214,11 @@ ${data.get('why')}
     generatedText.value = text;
     generatedText.select();
     navigator.clipboard.writeText(text).then(() => {
-      alert("Candidature copiée dans le presse-papier !");
+      alert("Candidature copiée dans le presse-papier ! Redirection vers Discord...");
+      window.open("https://discord.gg/WbXBS69n", "_blank");
     });
   });
 </script>
 
 </body>
 </html>
-
-
