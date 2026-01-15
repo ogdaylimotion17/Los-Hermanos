@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>LOS HERMANOS | GTA RP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Los Hermanos - Communauté GTA RP. Rejoignez nos événements et postulez pour notre gang RP.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,20 +45,25 @@
 
     .glow { text-shadow: 0 0 10px rgba(230,57,70,0.8); }
 
-    .event-card { background: linear-gradient(145deg, #111, #1a1a1a); border-left: 4px solid #e63946; padding: 25px; border-radius: 8px; margin-bottom: 25px; }
+    .event-card { background: linear-gradient(145deg, #111, #1a1a1a); border-left: 4px solid #e63946; padding: 25px; border-radius: 8px; margin-bottom: 25px; transition: all 0.3s ease; }
+    .event-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(230,57,70,0.3); }
 
-    .faq-item { margin-bottom: 25px; }
-    .faq-item summary { cursor: pointer; font-weight: 500; font-size: 1.1rem; }
-
-    .rule-list li::before { content: "⚠"; color: #e63946; margin-right: 10px; }
+    form { background: #111; padding: 25px; border-radius: 8px; margin-top: 25px; }
+    fieldset { border: 1px solid #333; padding: 15px; margin-bottom: 20px; border-radius: 6px; }
+    legend { padding: 0 10px; font-weight: bold; color: #e63946; }
+    label { display: block; margin-bottom: 10px; }
+    input[type=text], input[type=number], select, textarea { width: 100%; padding: 8px; border-radius: 4px; border: none; margin-top: 5px; background: #1a1a1a; color: #f2f2f2; }
+    textarea { resize: vertical; }
 
     footer { background: #000; text-align: center; padding: 30px; color: #777; font-size: 0.9rem; }
 
-    a.cta { background: #e63946; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; }
-    a.cta:hover { background: #ff4d5a; }
+    a.cta, button.cta { background: #e63946; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; border: none; cursor: pointer; }
+    a.cta:hover, button.cta:hover { background: #ff4d5a; }
 
-    textarea { width: 100%; margin-bottom: 20px; padding: 15px; border-radius: 8px; background: #111; color: #f2f2f2; border: 1px solid #333; resize: vertical; }
-    button.cta { cursor: pointer; border: none; font-weight: 700; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      section { padding: 40px 5%; }
+    }
   </style>
 </head>
 <body>
@@ -65,7 +71,6 @@
 <header>
   <nav>
     <a href="index.html">Accueil</a>
-    <a href="faq.html">FAQ</a>
     <a href="evenements.html">Événements</a>
   </nav>
 </header>
@@ -73,44 +78,6 @@
 <div class="hero fade-up">
   <h1>LOS HERMANOS</h1>
 </div>
-
-<section class="fade-up">
-  <h1 class="glow">Formulaire de Candidature LOS HERMANOS</h1>
-  <p style="max-width:900px;color:#ddd;margin-bottom:30px;">Remplis le formulaire puis clique sur <strong>« Copier la candidature »</strong> et colle-la dans un ticket Discord sur notre serveur.</p>
-
-  <form id="candidatureForm" style="max-width:900px;">
-    <h3>Présentation RP</h3>
-    <textarea rows="8" placeholder="Nom et Prénom RP :\nÂge RP :\nSexe RP :\nID UNIQUE :"></textarea>
-
-    <h3>Présentation HRP</h3>
-    <textarea rows="6" placeholder="Prénom :\nÂge (minimum 16 ans) :\nSexe :"></textarea>
-
-    <h3>Informations</h3>
-    <textarea rows="6" placeholder="Heures de jeu sur FiveM :\nArmes :"></textarea>
-
-    <h3>Disponibilités</h3>
-    <textarea rows="7" placeholder="Lundi :\nMardi :\nMercredi :\nJeudi :\nVendredi :\nWeek-end :"></textarea>
-
-    <h3>Motivation</h3>
-    <textarea rows="4" placeholder="Qualités (minimum 2) :"></textarea>
-    <textarea rows="5" placeholder="Motivation (minimum 2 lignes) :"></textarea>
-    <textarea rows="4" placeholder="Pourquoi toi et pas un autre ?"></textarea>
-
-    <button type="button" class="cta" onclick="copierCandidature()">Copier la candidature</button>
-  </form>
-</section>
-
-<section class="fade-up">
-  <h2 class="glow">Règles RP LOS HERMANOS</h2>
-  <ul class="rule-list" style="max-width:900px;color:#ddd;">
-    <li>RP sérieux obligatoire, aucune action irréaliste</li>
-    <li>Peur RP obligatoire, ta vie a une valeur</li>
-    <li>Aucun mental GF, tout se règle en RP</li>
-    <li>Respect total de la hiérarchie du gang</li>
-    <li>Interdiction de trahir sans scénario validé</li>
-    <li>Les décisions importantes se prennent en groupe</li>
-  </ul>
-</section>
 
 <section class="fade-up">
   <h2 class="glow">Événements à venir</h2>
@@ -129,32 +96,66 @@
 </section>
 
 <section class="fade-up">
-  <h2 class="glow">FAQ - Questions fréquentes</h2>
+  <h2 class="glow">Formulaire de Candidature LOS HERMANOS</h2>
+  <p>Remplis le formulaire puis clique sur « Copier la candidature » et colle-la dans un ticket Discord sur notre serveur.</p>
 
-  <details class="faq-item">
-    <summary>Comment rejoindre LOS HERMANOS ?</summary>
-    <p>Rejoins notre Discord et crée un ticket dans la section recrutement. Remplis le formulaire et attends le retour du staff.</p>
-  </details>
+  <form id="applicationForm">
+    <fieldset>
+      <legend>Présentation RP</legend>
+      <label>Nom et Prénom RP:<br><input type="text" name="rpName" required></label>
+      <label>Âge RP:<br><input type="number" name="rpAge" required></label>
+      <label>Sexe RP:<br>
+        <select name="rpGender">
+          <option value="">--Sélectionner--</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Féminin">Féminin</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </label>
+      <label>ID UNIQUE:<br><input type="text" name="rpID" required></label>
+    </fieldset>
 
-  <details class="faq-item">
-    <summary>Quel âge minimum pour postuler ?</summary>
-    <p>16 ans minimum pour respecter la maturité RP demandée.</p>
-  </details>
+    <fieldset>
+      <legend>Présentation HRP</legend>
+      <label>Prénom:<br><input type="text" name="hrpName" required></label>
+      <label>Âge (minimum 16 ans):<br><input type="number" name="hrpAge" min="16" required></label>
+      <label>Sexe:<br>
+        <select name="hrpGender">
+          <option value="">--Sélectionner--</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Féminin">Féminin</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </label>
+    </fieldset>
 
-  <details class="faq-item">
-    <summary>Quels types de RP sont attendus ?</summary>
-    <p>RP sérieux, peur RP obligatoire, pas de mental GF, respect de la hiérarchie et immersion dans les activités du gang.</p>
-  </details>
+    <fieldset>
+      <legend>Informations</legend>
+      <label>Heures de jeu sur FiveM:<br><input type="text" name="playHours"></label>
+      <label>Armes:<br><input type="text" name="weapons"></label>
+    </fieldset>
 
-  <details class="faq-item">
-    <summary>Dois-je posséder un micro ?</summary>
-    <p>Oui, un micro de bonne qualité est obligatoire pour toutes les interactions RP.</p>
-  </details>
+    <fieldset>
+      <legend>Disponibilités</legend>
+      <label>Lundi:<br><input type="text" name="monday"></label>
+      <label>Mardi:<br><input type="text" name="tuesday"></label>
+      <label>Mercredi:<br><input type="text" name="wednesday"></label>
+      <label>Jeudi:<br><input type="text" name="thursday"></label>
+      <label>Vendredi:<br><input type="text" name="friday"></label>
+      <label>Week-end:<br><input type="text" name="weekend"></label>
+    </fieldset>
 
-  <details class="faq-item">
-    <summary>Que faire si je ne suis pas accepté ?</summary>
-    <p>Tu peux demander un feedback au staff et retenter ta candidature plus tard en améliorant ton RP et ta motivation.</p>
-  </details>
+    <fieldset>
+      <legend>Motivation</legend>
+      <label>Qualités (minimum 2):<br><input type="text" name="qualities" required></label>
+      <label>Motivation (minimum 2 lignes):<br><textarea name="motivation" rows="4" required></textarea></label>
+      <label>Pourquoi toi et pas un autre ?<br><textarea name="why" rows="3" required></textarea></label>
+    </fieldset>
+
+    <button type="button" id="copyButton" class="cta">Copier la candidature</button>
+  </form>
+
+  <textarea id="generatedText" style="width:100%; height:250px; margin-top:15px;" readonly placeholder="La candidature générée apparaîtra ici..."></textarea>
 </section>
 
 <footer>
@@ -162,18 +163,68 @@
 </footer>
 
 <script>
-function copierCandidature() {
-  const textareas = document.querySelectorAll('textarea');
-  let contenu = '——— CANDIDATURE LOS HERMANOS ———\n\n';
-  textareas.forEach((ta) => { contenu += ta.placeholder + '\n' + ta.value + '\n\n'; });
-  navigator.clipboard.writeText(contenu).then(() => { alert('Candidature copiée ! Colle-la dans un ticket Discord.'); });
-}
+  // IntersectionObserver pour fade-up
+  const elements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  elements.forEach(el => observer.observe(el));
 
-const elements = document.querySelectorAll('.fade-up');
-const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.2 });
-elements.forEach(el => observer.observe(el));
+  // Formulaire candidature
+  const form = document.getElementById('applicationForm');
+  const copyButton = document.getElementById('copyButton');
+  const generatedText = document.getElementById('generatedText');
+
+  copyButton.addEventListener('click', () => {
+    const data = new FormData(form);
+    const text = `
+Présentation RP
+Nom et Prénom RP : ${data.get('rpName')}
+Âge RP : ${data.get('rpAge')}
+Sexe RP : ${data.get('rpGender')}
+ID UNIQUE : ${data.get('rpID')}
+
+Présentation HRP
+Prénom : ${data.get('hrpName')}
+Âge (minimum 16 ans) : ${data.get('hrpAge')}
+Sexe : ${data.get('hrpGender')}
+
+Informations
+Heures de jeu sur FiveM : ${data.get('playHours')}
+Armes : ${data.get('weapons')}
+
+Disponibilités
+Lundi : ${data.get('monday')}
+Mardi : ${data.get('tuesday')}
+Mercredi : ${data.get('wednesday')}
+Jeudi : ${data.get('thursday')}
+Vendredi : ${data.get('friday')}
+Week-end : ${data.get('weekend')}
+
+Motivation
+Qualités (minimum 2) : ${data.get('qualities')}
+
+Motivation (minimum 2 lignes) :
+${data.get('motivation')}
+
+Pourquoi toi et pas un autre ?
+${data.get('why')}
+    `.trim();
+
+    generatedText.value = text;
+    generatedText.select();
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Candidature copiée dans le presse-papier !");
+    });
+  });
 </script>
 
 </body>
 </html>
+
 
