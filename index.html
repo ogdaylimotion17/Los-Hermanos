@@ -2,189 +2,178 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>LOS HERMANOS | Recrutement GTA RP</title>
+  <title>LOS HERMANOS | GTA RP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #0b0b0b; color: #f2f2f2; line-height: 1.6; }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
-      color: #f2f2f2;
-      line-height: 1.6;
-    }
+    header { height: 60px; background: #111; display: flex; align-items: center; padding: 0 20px; }
+    header nav a { color: #e63946; margin-right: 20px; text-decoration: none; font-weight: 500; }
+    header nav a:hover { text-decoration: underline; }
 
-    header {
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1549921296-3ecf1f06b7f1') center/cover no-repeat;
+    .hero {
+      height: 60vh;
+      background: url('https://i.ibb.co/wZXpX3zn/gggg.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      position: relative;
     }
-
-    header::after {
-      content: "";
+    .hero::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.6);
     }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-    }
-
     .hero h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-    }
-
-    .hero p {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    section {
-      padding: 80px 10%;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: #e63946;
-    }
-
-    .about p {
-      max-width: 900px;
-      font-size: 1.1rem;
-      color: #ddd;
-    }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .card {
-      background: #111;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .card h3 {
-      color: #e63946;
-      margin-bottom: 15px;
-    }
-
-    .recruitment ul {
-      list-style: none;
-      max-width: 700px;
-    }
-
-    .recruitment li {
-      margin-bottom: 15px;
-      padding-left: 25px;
       position: relative;
-    }
-
-    .recruitment li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
       color: #e63946;
+      font-size: 4rem;
+      z-index: 1;
+      text-shadow: 0 0 10px rgba(230,57,70,0.8);
     }
 
-    .cta {
-      margin-top: 40px;
-      display: inline-block;
-      background: #e63946;
-      color: #fff;
-      padding: 15px 40px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.3s;
-    }
+    section { padding: 60px 10%; }
+    h1,h2,h3 { color: #e63946; margin-bottom: 20px; }
 
-    .cta:hover {
-      background: #ff4d5a;
-      transform: scale(1.05);
-    }
+    .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 30px;
-      color: #777;
-      font-size: 0.9rem;
-    }
+    .glow { text-shadow: 0 0 10px rgba(230,57,70,0.8); }
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      section { padding: 60px 6%; }
-    }
+    .event-card { background: linear-gradient(145deg, #111, #1a1a1a); border-left: 4px solid #e63946; padding: 25px; border-radius: 8px; margin-bottom: 25px; }
+
+    .faq-item { margin-bottom: 25px; }
+    .faq-item summary { cursor: pointer; font-weight: 500; font-size: 1.1rem; }
+
+    .rule-list li::before { content: "⚠"; color: #e63946; margin-right: 10px; }
+
+    footer { background: #000; text-align: center; padding: 30px; color: #777; font-size: 0.9rem; }
+
+    a.cta { background: #e63946; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; }
+    a.cta:hover { background: #ff4d5a; }
+
+    textarea { width: 100%; margin-bottom: 20px; padding: 15px; border-radius: 8px; background: #111; color: #f2f2f2; border: 1px solid #333; resize: vertical; }
+    button.cta { cursor: pointer; border: none; font-weight: 700; }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="hero">
-    <h1>LOS HERMANOS</h1>
-    <p>La famille avant tout.</p>
-  </div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="faq.html">FAQ</a>
+    <a href="evenements.html">Événements</a>
+  </nav>
 </header>
 
-<section class="about">
-  <h2>Qui sommes-nous ?</h2>
-  <p>
-    <strong>LOS HERMANOS</strong> est un gang GTA RP basé sur la fraternité, la loyauté et le respect.
-    Plus qu'un simple gang, nous sommes une famille soudée où chaque membre compte.
-    Nous privilégions un RP sérieux, immersif et cohérent, axé sur les relations humaines,
-    les alliances et les conflits réalistes.
-  </p>
+<div class="hero fade-up">
+  <h1>LOS HERMANOS</h1>
+</div>
+
+<section class="fade-up">
+  <h1 class="glow">Formulaire de Candidature LOS HERMANOS</h1>
+  <p style="max-width:900px;color:#ddd;margin-bottom:30px;">Remplis le formulaire puis clique sur <strong>« Copier la candidature »</strong> et colle-la dans un ticket Discord sur notre serveur.</p>
+
+  <form id="candidatureForm" style="max-width:900px;">
+    <h3>Présentation RP</h3>
+    <textarea rows="8" placeholder="Nom et Prénom RP :\nÂge RP :\nSexe RP :\nID UNIQUE :"></textarea>
+
+    <h3>Présentation HRP</h3>
+    <textarea rows="6" placeholder="Prénom :\nÂge (minimum 16 ans) :\nSexe :"></textarea>
+
+    <h3>Informations</h3>
+    <textarea rows="6" placeholder="Heures de jeu sur FiveM :\nArmes :"></textarea>
+
+    <h3>Disponibilités</h3>
+    <textarea rows="7" placeholder="Lundi :\nMardi :\nMercredi :\nJeudi :\nVendredi :\nWeek-end :"></textarea>
+
+    <h3>Motivation</h3>
+    <textarea rows="4" placeholder="Qualités (minimum 2) :"></textarea>
+    <textarea rows="5" placeholder="Motivation (minimum 2 lignes) :"></textarea>
+    <textarea rows="4" placeholder="Pourquoi toi et pas un autre ?"></textarea>
+
+    <button type="button" class="cta" onclick="copierCandidature()">Copier la candidature</button>
+  </form>
 </section>
 
-<section>
-  <h2>Nos valeurs</h2>
-  <div class="values">
-    <div class="card">
-      <h3>🤝 Fraternité</h3>
-      <p>Chez LOS HERMANOS, personne n'est seul. On avance ensemble, on chute ensemble.</p>
-    </div>
-    <div class="card">
-      <h3>🧠 RP sérieux</h3>
-      <p>Nous privilégions la cohérence RP, la maturité et le respect des règles serveur.</p>
-    </div>
-    <div class="card">
-      <h3>🔥 Respect</h3>
-      <p>Le respect se gagne. Nous imposons le nôtre par notre comportement et notre mentalité.</p>
-    </div>
+<section class="fade-up">
+  <h2 class="glow">Règles RP LOS HERMANOS</h2>
+  <ul class="rule-list" style="max-width:900px;color:#ddd;">
+    <li>RP sérieux obligatoire, aucune action irréaliste</li>
+    <li>Peur RP obligatoire, ta vie a une valeur</li>
+    <li>Aucun mental GF, tout se règle en RP</li>
+    <li>Respect total de la hiérarchie du gang</li>
+    <li>Interdiction de trahir sans scénario validé</li>
+    <li>Les décisions importantes se prennent en groupe</li>
+  </ul>
+</section>
+
+<section class="fade-up">
+  <h2 class="glow">Événements à venir</h2>
+  <div class="event-card">
+    <h3>🔫 Entraînement RP</h3>
+    <p>Session d'entraînement pour améliorer la cohésion et la stratégie du gang.</p>
+  </div>
+  <div class="event-card">
+    <h3>🚗 Convoi et patrouille</h3>
+    <p>Sortie RP pour marquer le territoire et montrer la présence du gang.</p>
+  </div>
+  <div class="event-card">
+    <h3>🎬 Scénario RP</h3>
+    <p>Événement scénarisé avec d'autres groupes pour enrichir l'histoire RP.</p>
   </div>
 </section>
 
-<section class="recruitment">
-  <h2>Recrutement</h2>
-  <ul>
-    <li>Avoir une bonne connaissance du RP GTA</li>
-    <li>Être mature et respectueux</li>
-    <li>Savoir jouer son personnage (peur RP, conséquences)</li>
-    <li>Être actif et impliqué</li>
-    <li>Micro de bonne qualité</li>
-  </ul>
+<section class="fade-up">
+  <h2 class="glow">FAQ - Questions fréquentes</h2>
 
-  <a href="#" class="cta">Nous rejoindre</a>
+  <details class="faq-item">
+    <summary>Comment rejoindre LOS HERMANOS ?</summary>
+    <p>Rejoins notre Discord et crée un ticket dans la section recrutement. Remplis le formulaire et attends le retour du staff.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Quel âge minimum pour postuler ?</summary>
+    <p>16 ans minimum pour respecter la maturité RP demandée.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Quels types de RP sont attendus ?</summary>
+    <p>RP sérieux, peur RP obligatoire, pas de mental GF, respect de la hiérarchie et immersion dans les activités du gang.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Dois-je posséder un micro ?</summary>
+    <p>Oui, un micro de bonne qualité est obligatoire pour toutes les interactions RP.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Que faire si je ne suis pas accepté ?</summary>
+    <p>Tu peux demander un feedback au staff et retenter ta candidature plus tard en améliorant ton RP et ta motivation.</p>
+  </details>
 </section>
 
 <footer>
   © LOS HERMANOS — GTA RP | La famille avant tout.
 </footer>
 
+<script>
+function copierCandidature() {
+  const textareas = document.querySelectorAll('textarea');
+  let contenu = '——— CANDIDATURE LOS HERMANOS ———\n\n';
+  textareas.forEach((ta) => { contenu += ta.placeholder + '\n' + ta.value + '\n\n'; });
+  navigator.clipboard.writeText(contenu).then(() => { alert('Candidature copiée ! Colle-la dans un ticket Discord.'); });
+}
+
+const elements = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.2 });
+elements.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
+
