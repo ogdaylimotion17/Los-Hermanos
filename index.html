@@ -6,15 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Los Hermanos - Rejoins notre gang GTA RP et participe à des événements exclusifs.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Montserrat', sans-serif; background: #0b0b0b; color: #f2f2f2; line-height: 1.6; }
 
+    /* Header */
     header { height: 60px; background: #111; display: flex; align-items: center; padding: 0 20px; position: sticky; top: 0; z-index: 100; }
     header nav a { color: #e63946; margin-right: 20px; text-decoration: none; font-weight: 500; }
     header nav a:hover { text-decoration: underline; }
 
-    /* Badge avec cercle vert */
+    /* Badge en ligne */
     #onlineStatus {
       position: fixed;
       top: 20px;
@@ -30,16 +32,9 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       z-index: 200;
     }
+    .greenDot { width: 12px; height: 12px; background: #28a745; border-radius: 50%; margin-right: 8px; }
 
-    #onlineStatus .greenDot {
-      width: 12px;
-      height: 12px;
-      background: #28a745; /* vert */
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 8px;
-    }
-
+    /* Hero */
     .hero {
       height: 70vh;
       background: url('https://i.ibb.co/wZXpX3zn/gggg.jpg') center/cover no-repeat;
@@ -47,21 +42,25 @@
       position: relative;
     }
     .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
-    .hero h1 { position: relative; color: #e63946; font-size: 4rem; z-index: 1; text-shadow: 0 0 20px rgba(230,57,70,0.9); margin-bottom: 15px; }
-    .hero p { position: relative; z-index: 1; font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.6); margin-bottom: 20px; }
-    .hero .cta { z-index: 1; }
+    .hero h1 { position: relative; color: #e63946; font-size: 4rem; z-index: 1; text-shadow: 0 0 20px rgba(230,57,70,0.9); margin-bottom: 10px; }
+    .hero p { position: relative; z-index: 1; font-size: 1.4rem; margin-bottom: 20px; }
+    .hero a.cta, .guide-btn { z-index: 1; text-decoration: none; font-weight: bold; padding: 12px 30px; border-radius: 30px; display: inline-block; margin: 5px; transition: all 0.3s ease; cursor: pointer; }
+    .hero a.cta { background: #e63946; color: #fff; }
+    .hero a.cta:hover { background: #ff4d5a; }
+    .guide-btn { background: linear-gradient(145deg,#e63946,#ff4d5a); color:#fff; box-shadow: 0 0 25px rgba(230,57,70,0.7); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow:0 0 15px rgba(230,57,70,0.4);} 50% { box-shadow:0 0 35px rgba(230,57,70,1);} 100% { box-shadow:0 0 15px rgba(230,57,70,0.4);} }
 
+    /* Sections */
     section { padding: 60px 10%; }
     h1,h2,h3 { color: #e63946; margin-bottom: 20px; }
 
-    .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
     .glow { text-shadow: 0 0 10px rgba(230,57,70,0.8); }
+    .intro-text { margin-bottom: 30px; font-size: 1.2rem; text-align: center; }
 
-    .event-card { background: linear-gradient(145deg, #111, #1a1a1a); border-left: 4px solid #e63946; padding: 25px; border-radius: 8px; margin-bottom: 25px; transition: all 0.3s ease; }
+    .event-card { background: linear-gradient(145deg,#111,#1a1a1a); border-left: 4px solid #e63946; padding: 25px; border-radius: 8px; margin-bottom: 25px; transition: all 0.3s ease; }
     .event-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(230,57,70,0.4); }
 
+    /* Formulaire */
     form { background: #111; padding: 25px; border-radius: 8px; margin-top: 25px; box-shadow: 0 5px 20px rgba(230,57,70,0.2); }
     fieldset { border: 1px solid #333; padding: 15px; margin-bottom: 20px; border-radius: 6px; }
     legend { padding: 0 10px; font-weight: bold; color: #e63946; }
@@ -71,78 +70,70 @@
 
     /* Règles */
     .rules { background: #111; padding: 25px; border-radius: 8px; margin-top: 25px; box-shadow: 0 5px 20px rgba(230,57,70,0.2); }
-    .rules p { margin-bottom: 15px; }
     .rules ol { margin-left: 20px; }
+    .rules p { margin-top: 15px; }
 
     footer { background: #000; text-align: center; padding: 30px; color: #777; font-size: 0.9rem; }
 
-    a.cta, button.cta { background: #e63946; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; border: none; cursor: pointer; font-weight: 500; }
-    a.cta:hover, button.cta:hover { background: #ff4d5a; }
+    /* Animations */
+    .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .highlight { color: #e63946; font-weight: bold; }
-    .intro-text { margin-bottom: 40px; font-size: 1.2rem; text-align: center; }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1rem; }
-      section { padding: 40px 5%; }
-    }
+    @media(max-width:768px){.hero h1{font-size:2.5rem;}.hero p{font-size:1rem;}section{padding:40px 5%;}}
   </style>
 </head>
+
 <body>
 
-<!-- Badge avec cercle vert -->
-<div id="onlineStatus">
-  <span class="greenDot"></span> Personnes connectées : 5
-</div>
+<!-- Badge connecté -->
+<div id="onlineStatus"><span class="greenDot"></span> Personnes connectées : 5</div>
 
 <header>
   <nav>
     <a href="index.html">Accueil</a>
     <a href="evenements.html">Événements</a>
+    <a href="guide-illegal.html">Guide Illégal</a>
     <a href="#formulaire">Candidature</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <div class="hero fade-up">
   <h1>LOS HERMANOS</h1>
-  <p>Rejoins la famille et vis le RP comme jamais auparavant</p>
-  <a href="#formulaire" class="cta">Postule maintenant</a>
+  <p>Lis le guide avant de postuler pour vivre le RP à fond</p>
+  <a href="guide-illegal.html" class="guide-btn">📕 Lire le Guide de l’Illégal</a>
+  <a href="#formulaire" class="cta">Postuler</a>
 </div>
 
+<!-- Événements -->
 <section class="fade-up">
   <h2 class="glow">Événements à venir</h2>
   <p class="intro-text">Notre gang est actif chaque semaine ! Viens participer aux événements RP et vivre l’action en famille.</p>
-  <div class="event-card">
-    <h3>🔫 Entraînement RP</h3>
-    <p>Session d'entraînement pour améliorer la cohésion et la stratégie du gang.</p>
-  </div>
-  <div class="event-card">
-    <h3>🚗 Convoi et patrouille</h3>
-    <p>Sortie RP pour marquer le territoire et montrer la présence du gang.</p>
-  </div>
-  <div class="event-card">
-    <h3>🎬 Scénario RP</h3>
-    <p>Événement scénarisé avec d'autres groupes pour enrichir l'histoire RP.</p>
-  </div>
+
+  <div class="event-card"><h3>🔫 Entraînement RP</h3><p>Session d'entraînement pour améliorer la cohésion et la stratégie du gang.</p></div>
+  <div class="event-card"><h3>🚗 Convoi et patrouille</h3><p>Sortie RP pour marquer le territoire et montrer la présence du gang.</p></div>
+  <div class="event-card"><h3>🎬 Scénario RP</h3><p>Événement scénarisé avec d'autres groupes pour enrichir l'histoire RP.</p></div>
 </section>
 
-<section class="fade-up rules" id="rules">
+<!-- Règles -->
+<section class="fade-up rules">
   <h2 class="glow">Règlement du serveur</h2>
   <ol>
-    <li><strong>ℛ𝑒𝓈𝓅𝑒𝒸𝓉 ℳ𝓊𝓉𝓊𝑒𝓁 :</strong> Tous les joueurs doivent se traiter avec respect et courtoisie, qu'ils soient en jeu ou sur les plateformes de discussion associées au serveur.</li>
-    <li><strong>𝒜𝓊𝒸𝓊𝓃𝑒 𝒟𝒾𝓈𝒸𝓇𝒾𝓂𝒾𝓃𝒶𝓉𝒾𝑜𝓃 :</strong> Aucune forme de discrimination basée sur la race, la religion, l'origine ethnique, le genre, l'orientation sexuelle, ou tout autre motif ne sera tolérée.</li>
-    <li><strong>ℒ𝒶𝓃𝑔𝒶𝑔𝑒 𝒜𝓅𝓅𝓇𝑜𝓅𝓇𝒾é :</strong> Évitez l'utilisation de langage offensant, de discours haineux, de harcèlement, de trolling ou de toute forme de comportement perturbateur qui pourrait nuire à l'expérience des autres joueurs.</li>
-    <li><strong>𝒮𝒶𝓃𝒸𝓉𝒾𝑜𝓃𝓈 :</strong> Tout manquement à ces règles peut entraîner des avertissements, des suspensions temporaires ou permanentes, voire l'expulsion définitive du serveur, selon la gravité de l'infraction et à la discrétion de l'équipe administrative.</li>
+    <li><strong>ℛ𝑒𝓈𝓅𝑒𝒸𝓉 ℳ𝓊𝓉𝓊𝑒𝓁 :</strong> Tous les joueurs doivent se traiter avec respect et courtoisie, qu'ils soient en jeu ou sur les plateformes associées.</li>
+    <li><strong>𝒜𝓊𝒸𝓊𝓃𝑒 𝒟𝒾𝓈𝒸𝓇𝒾𝓂𝒾𝓃𝒶𝓉𝒾𝑜𝓃 :</strong> Aucune discrimination basée sur la race, religion, origine, genre ou orientation sexuelle ne sera tolérée.</li>
+    <li><strong>ℒ𝒶𝓃𝑔𝒶𝑔𝑒 𝒜𝓅𝓅𝓇𝑜𝓅𝓇𝒾é :</strong> Pas de langage offensant, discours haineux, harcèlement ou trolling.</li>
+    <li><strong>𝒮𝒶𝓃𝒸𝓉𝒾𝑜𝓃𝓈 :</strong> Avertissements, suspensions ou expulsions selon la gravité.</li>
   </ol>
-  <p>En acceptant de jouer sur ce serveur, vous vous engagez à respecter ce règlement et à contribuer à créer une communauté agréable et respectueuse pour tous les joueurs.</p>
+  <p>En acceptant de jouer, vous vous engagez à respecter ce règlement et à contribuer à une communauté RP agréable.</p>
 </section>
 
+<!-- Formulaire -->
 <section class="fade-up" id="formulaire">
   <h2 class="glow">Formulaire de Candidature</h2>
-  <p class="intro-text">Remplis le formulaire ci-dessous et clique sur <span class="highlight">"Valider la candidature"</span>. Ta candidature sera copiée et Discord s’ouvrira automatiquement pour nous rejoindre !</p>
+  <p class="intro-text">Remplis le formulaire puis clique sur <strong>Valider la candidature</strong>. Ta candidature sera copiée et Discord s’ouvrira.</p>
 
   <form id="applicationForm">
+    <!-- Formulaire comme tu l'avais -->
     <fieldset>
       <legend>Présentation RP</legend>
       <label>Nom et Prénom RP:<br><input type="text" name="rpName" required></label>
@@ -157,11 +148,10 @@
       </label>
       <label>ID UNIQUE:<br><input type="text" name="rpID" required></label>
     </fieldset>
-
     <fieldset>
       <legend>Présentation HRP</legend>
       <label>Prénom:<br><input type="text" name="hrpName" required></label>
-      <label>Âge (minimum 16 ans):<br><input type="number" name="hrpAge" min="16" required></label>
+      <label>Âge (min 16 ans):<br><input type="number" name="hrpAge" min="16" required></label>
       <label>Sexe:<br>
         <select name="hrpGender">
           <option value="">--Sélectionner--</option>
@@ -171,13 +161,11 @@
         </select>
       </label>
     </fieldset>
-
     <fieldset>
       <legend>Informations</legend>
       <label>Heures de jeu sur FiveM:<br><input type="text" name="playHours"></label>
       <label>Armes:<br><input type="text" name="weapons"></label>
     </fieldset>
-
     <fieldset>
       <legend>Disponibilités</legend>
       <label>Lundi:<br><input type="text" name="monday"></label>
@@ -187,11 +175,10 @@
       <label>Vendredi:<br><input type="text" name="friday"></label>
       <label>Week-end:<br><input type="text" name="weekend"></label>
     </fieldset>
-
     <fieldset>
       <legend>Motivation</legend>
-      <label>Qualités (minimum 2):<br><input type="text" name="qualities" required></label>
-      <label>Motivation (minimum 2 lignes):<br><textarea name="motivation" rows="4" required></textarea></label>
+      <label>Qualités (min 2):<br><input type="text" name="qualities" required></label>
+      <label>Motivation (min 2 lignes):<br><textarea name="motivation" rows="4" required></textarea></label>
       <label>Pourquoi toi et pas un autre ?<br><textarea name="why" rows="3" required></textarea></label>
     </fieldset>
 
@@ -201,29 +188,22 @@
   <textarea id="generatedText" style="width:100%; height:250px; margin-top:15px;" readonly placeholder="La candidature générée apparaîtra ici..."></textarea>
 </section>
 
-<footer>
-  © LOS HERMANOS — GTA RP | La famille avant tout.
-</footer>
+<footer>© LOS HERMANOS — GTA RP | La famille avant tout.</footer>
 
 <script>
   // Fade-up animation
   const elements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  elements.forEach(el => observer.observe(el));
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }});
+  }, { threshold:0.2 });
+  elements.forEach(el=>observer.observe(el));
 
-  // Formulaire + ouverture Discord
+  // Formulaire + Discord
   const form = document.getElementById('applicationForm');
   const validateButton = document.getElementById('validateButton');
   const generatedText = document.getElementById('generatedText');
 
-  validateButton.addEventListener('click', () => {
+  validateButton.addEventListener('click', ()=>{
     const data = new FormData(form);
     const text = `
 Présentation RP
@@ -261,15 +241,13 @@ ${data.get('why')}
 
     generatedText.value = text;
     generatedText.select();
-    navigator.clipboard.writeText(text).then(() => {
+    navigator.clipboard.writeText(text).then(()=>{
       alert("Candidature copiée dans le presse-papier ! Redirection vers Discord...");
-      window.open("https://discord.gg/WbXBS69n", "_blank");
+      window.open("https://discord.gg/WbXBS69n","_blank");
     });
   });
 </script>
 
 </body>
-</html>
-
 </html>
 
