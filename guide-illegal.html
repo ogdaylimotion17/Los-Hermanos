@@ -53,6 +53,63 @@
       box-shadow: 0 5px 20px rgba(230,57,70,0.2);
     }
 
+    /* --- NOUVEAUX STYLES POUR LE TABLEAU INTERACTIF --- */
+    .selector-box {
+      margin-bottom: 25px;
+    }
+
+    select {
+      width: 100%;
+      padding: 15px;
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #actionDetails {
+      display: none;
+      margin-top: 20px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      overflow: hidden;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: #333;
+    }
+
+    .info-item {
+      background: #111;
+      padding: 15px;
+    }
+
+    .info-label {
+      display: block;
+      color: #e63946;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      font-size: 1rem;
+    }
+
+    .status-yes { color: #28a745; font-weight: bold; }
+    .status-no { color: #dc3545; font-weight: bold; }
+    /* -------------------------------------------------- */
+
     .image-box {
       text-align: center;
       margin-top: 20px;
@@ -101,7 +158,43 @@
     Toutes les informations sont fictives et valables uniquement sur le serveur.
   </div>
 
-  <!-- ================= PÊCHE ILLÉGALE ================= -->
+  <div class="card">
+    <h2>📊 Réglementation des Braquages & Scènes</h2>
+    <p style="margin-bottom: 20px;">Sélectionnez une action pour connaître les limites (otages, policiers, armes).</p>
+    
+    <div class="selector-box">
+      <select id="actionSelect">
+        <option value="">-- Choisissez une action --</option>
+        <option value="atm">ATM</option>
+        <option value="superette">Supérette</option>
+        <option value="cambriolage">Cambriolage</option>
+        <option value="drogue">Vente de Drogue</option>
+        <option value="labo">Scène Laboratoire</option>
+        <option value="armurerie">Armurerie</option>
+        <option value="fleeca">Banque Fleeca</option>
+        <option value="bijouterie">Bijouterie</option>
+        <option value="pacifique">Banque Pacifique</option>
+        <option value="human">Human Labs</option>
+        <option value="convoi">Convoi de fonds / Saisie</option>
+        <option value="annexe">Scènes Annexes (Inter-groupes)</option>
+      </select>
+    </div>
+
+    <div id="actionDetails">
+      <div class="info-grid">
+        <div class="info-item"><span class="info-label">Attente Police</span><span id="valPolice">-</span></div>
+        <div class="info-item"><span class="info-label">Otages</span><span id="valOtages">-</span></div>
+        <div class="info-item"><span class="info-label">Otage / Agents</span><span id="valAgentOtage">-</span></div>
+        <div class="info-item"><span class="info-label">Braqueurs</span><span id="valBraqueurs">-</span></div>
+        <div class="info-item"><span class="info-label">Armes</span><span id="valArmes">-</span></div>
+        <div class="info-item"><span class="info-label">Plans Mule/Récup</span><span id="valPlans">-</span></div>
+        <div class="info-item"><span class="info-label">Conducteur</span><span id="valDriver">-</span></div>
+        <div class="info-item"><span class="info-label">Entrave CP</span><span id="valCP">-</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
 
   <div class="card">
     <h2>🎣 Pêche Illégale (RP)</h2>
@@ -118,8 +211,6 @@
 
   <div class="divider"></div>
 
-  <!-- ================= DARKNET ================= -->
-
   <div class="card">
     <h2>💻 Commandes Darknet (RP)</h2>
     <ul>
@@ -133,8 +224,6 @@
   </div>
 
   <div class="divider"></div>
-
-  <!-- ================= LA BLANCHE ================= -->
 
   <div class="card">
     <h2>❄️ La Blanche (RP)</h2>
@@ -150,8 +239,6 @@
   </div>
 
   <div class="divider"></div>
-
-  <!-- ================= FABRICATION DE BRANCHES ================= -->
 
   <div class="card">
     <h2>🌿 Fabrication de Branches (RP)</h2>
@@ -169,8 +256,6 @@
 
   <div class="divider"></div>
 
-  <!-- ================= FABRICATION DES MUNITIONS ================= -->
-
   <div class="card">
     <h2>🔫 Fabrication des Munitions (RP)</h2>
     <ul>
@@ -184,8 +269,6 @@
   </div>
 
   <div class="divider"></div>
-
-  <!-- ================= SYSTÈMES D’ACTIVITÉS ILLÉGALES ================= -->
 
   <div class="card">
     <h2>⚙️ Systèmes d’Activités Illégales (RP)</h2>
@@ -206,6 +289,47 @@
 <footer>
   © LOS HERMANOS — GTA RP | Guide de l’Illégal
 </footer>
+
+<script>
+    const YES = '<span class="status-yes">✅ OUI</span>';
+    const NO = '<span class="status-no">❌ NON</span>';
+
+    const actionsData = {
+        atm: { police: "3 minutes", otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Interne / ❌ Externe", cp: NO },
+        superette: { police: "3 minutes", otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Interne / ❌ Externe", cp: NO },
+        cambriolage: { police: "3 minutes", otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Interne / ❌ Externe", cp: NO },
+        drogue: { police: NO, otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Interne / ❌ Externe", cp: NO },
+        labo: { police: NO, otages: NO, agentOtage: NO, braqueurs: "1 à ∞", armes: NO, plans: "Mule: 7m | Récup: 5m", driver: "✅ Interne / ❌ Externe", cp: YES },
+        armurerie: { police: "5 minutes", otages: "2 à 3", agentOtage: NO, braqueurs: "2 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        fleeca: { police: "5 minutes", otages: "2 à 4", agentOtage: NO, braqueurs: "3 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        bijouterie: { police: "5 minutes", otages: "3 à 4", agentOtage: NO, braqueurs: "3 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        pacifique: { police: "15 minutes", otages: "5 à 8", agentOtage: "✅ 0 à 3", braqueurs: "7 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        human: { police: NO, otages: "5 à 8", agentOtage: "✅ 0 à 3", braqueurs: "7 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        convoi: { police: NO, otages: "4 à 8", agentOtage: "✅ 0 à 5", braqueurs: "10 à 25", armes: "⚠️ Lourde Oblig.", plans: YES, driver: YES, cp: YES },
+        annexe: { police: NO, otages: "1 à 10", agentOtage: "✅ 0 à 3", braqueurs: "Max 30 total", armes: "⚠️ Max 3 lourdes", plans: YES, driver: YES, cp: YES }
+    };
+
+    const select = document.getElementById('actionSelect');
+    const details = document.getElementById('actionDetails');
+
+    select.addEventListener('change', () => {
+        const val = select.value;
+        if (val && actionsData[val]) {
+            const d = actionsData[val];
+            document.getElementById('valPolice').innerHTML = d.police;
+            document.getElementById('valOtages').innerHTML = d.otages;
+            document.getElementById('valAgentOtage').innerHTML = d.agentOtage;
+            document.getElementById('valBraqueurs').innerHTML = d.braqueurs;
+            document.getElementById('valArmes').innerHTML = d.armes;
+            document.getElementById('valPlans').innerHTML = d.plans;
+            document.getElementById('valDriver').innerHTML = d.driver;
+            document.getElementById('valCP').innerHTML = d.cp;
+            details.style.display = 'block';
+        } else {
+            details.style.display = 'none';
+        }
+    });
+</script>
 
 </body>
 </html>
