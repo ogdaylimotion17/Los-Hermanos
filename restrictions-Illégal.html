@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Réglementation Illégale | LOS HERMANOS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background: #0b0b0b; color: #f2f2f2; line-height: 1.4; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #e63946; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .back-link { color: #777; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .back-link:hover { color: #e63946; }
+
+        .selector-box { background: #111; padding: 20px; border-radius: 8px; border-bottom: 3px solid #e63946; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        select { width: 100%; padding: 15px; background: #1a1a1a; color: #fff; border: 1px solid #333; border-radius: 5px; font-size: 1.1rem; cursor: pointer; outline: none; }
+
+        #actionDetails { display: none; background: #111; border-radius: 8px; overflow: hidden; animation: fadeIn 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .action-header { background: #e63946; padding: 20px; color: #fff; text-align: center; }
+        .action-header h2 { margin: 0; font-size: 1.8rem; text-transform: uppercase; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #333; }
+        .info-item { background: #111; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+        .info-label { color: #e63946; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+        .info-value { font-size: 1.05rem; font-weight: 500; }
+
+        .status-yes { color: #28a745; font-weight: bold; }
+        .status-no { color: #dc3545; font-weight: bold; }
+        
+        @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="index.html" class="back-link">← Retour au site</a>
+        <h1>Guide de l'Illégal</h1>
+        <p>Sélectionnez une activité pour voir les restrictions en vigueur.</p>
+    </header>
+
+    <div class="selector-box">
+        <select id="actionSelect">
+            <option value="">-- Choisissez une action RP --</option>
+            <optgroup label="Petites Frappes">
+                <option value="atm">ATM</option>
+                <option value="superette">Supérette</option>
+                <option value="cambriolage">Cambriolage</option>
+                <option value="drogue">Vente de Drogue</option>
+            </optgroup>
+            <optgroup label="Actions Moyennes">
+                <option value="labo">Scène Laboratoire</option>
+                <option value="armurerie">Armurerie</option>
+                <option value="fleeca">Banque Fleeca</option>
+                <option value="bijouterie">Bijouterie</option>
+            </optgroup>
+            <optgroup label="Grosses Opérations">
+                <option value="pacifique">Banque Pacifique</option>
+                <option value="human">Human Labs</option>
+                <option value="convoi">Convoi de fonds / Saisie</option>
+                <option value="annexe">Scènes Annexes (Gangs/Org)</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div id="actionDetails">
+        <div class="action-header"><h2 id="titleAction">-</h2></div>
+        <div class="info-grid">
+            <div class="info-item"><span class="info-label">Temps d'attente Police</span><span class="info-value" id="valPolice">-</span></div>
+            <div class="info-item"><span class="info-label">Nombre d'otages</span><span class="info-value" id="valOtages">-</span></div>
+            <div class="info-item"><span class="info-label">Otage sur Agents</span><span class="info-value" id="valAgentOtage">-</span></div>
+            <div class="info-item"><span class="info-label">Nombre de braqueurs</span><span class="info-value" id="valBraqueurs">-</span></div>
+            <div class="info-item"><span class="info-label">Armes autorisées</span><span class="info-value" id="valArmes">-</span></div>
+            <div class="info-item"><span class="info-label">Plan Mule / Récup</span><span class="info-value" id="valPlans">-</span></div>
+            <div class="info-item"><span class="info-label">Changement Conducteur</span><span class="info-value" id="valDriver">-</span></div>
+            <div class="info-item"><span class="info-label">Entrave à la CP</span><span class="info-value" id="valCP">-</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const YES = '<span class="status-yes">✅ OUI</span>';
+    const NO = '<span class="status-no">❌ NON</span>';
+
+    const actionsData = {
+        atm: { title: "ATM", police: "3 minutes", otages: NO, agentOtage: NO, braqueurs: "1", armes: "❌ Armes de poings/lourdes interdites", plans: NO, driver: "✅ Présent dans véhicule / ❌ Non présent", cp: NO },
+        superette: { title: "Supérette", police: "3 minutes", otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Présent dans véhicule / ❌ Non présent", cp: NO },
+        cambriolage: { title: "Cambriolage", police: "3 minutes", otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Présent dans véhicule / ❌ Non présent", cp: NO },
+        drogue: { title: "Vente de Drogue", police: NO, otages: NO, agentOtage: NO, braqueurs: "1", armes: NO, plans: NO, driver: "✅ Présent dans véhicule / ❌ Non présent", cp: NO },
+        labo: { title: "Scène Laboratoire", police: NO, otages: NO, agentOtage: NO, braqueurs: "1 à ∞", armes: NO, plans: "Mule: 7 min / Récup: 5 min", driver: "✅ Présent dans véhicule / ❌ Non présent", cp: YES },
+        armurerie: { title: "Armurerie", police: "5 minutes", otages: "2 à 3", agentOtage: NO, braqueurs: "2 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        fleeca: { title: "Banque Fleeca", police: "5 minutes", otages: "2 à 4", agentOtage: NO, braqueurs: "3 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        bijouterie: { title: "Bijouterie", police: "5 minutes", otages: "3 à 4", agentOtage: NO, braqueurs: "3 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        pacifique: { title: "Banque Pacifique", police: "15 minutes", otages: "5 à 8", agentOtage: "✅ 0 à 3 agents", braqueurs: "7 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        human: { title: "Human Labs", police: NO, otages: "5 à 8", agentOtage: "✅ 0 à 3 agents", braqueurs: "7 à ∞", armes: YES, plans: YES, driver: YES, cp: YES },
+        convoi: { title: "Convoi de fonds / Saisie", police: NO, otages: "4 à 8", agentOtage: "✅ 0 à 5 agents", braqueurs: "10 à 25", armes: "⚠️ 1 arme lourde obligatoire", plans: YES, driver: YES, cp: YES },
+        annexe: { title: "Scènes Annexes (PF/Gangs)", police: NO, otages: "1 à 10", agentOtage: "✅ 0 à 3 agents", braqueurs: "Max 30 personnes (tous groupes)", armes: "⚠️ Max 3 lourdes / 4 auto", plans: YES, driver: YES, cp: YES }
+    };
+
+    const select = document.getElementById('actionSelect');
+    const display = document.getElementById('actionDetails');
+
+    select.addEventListener('change', () => {
+        const data = actionsData[select.value];
+        if (data) {
+            document.getElementById('titleAction').innerText = data.title;
+            document.getElementById('valPolice').innerHTML = data.police;
+            document.getElementById('valOtages').innerHTML = data.otages;
+            document.getElementById('valAgentOtage').innerHTML = data.agentOtage;
+            document.getElementById('valBraqueurs').innerHTML = data.braqueurs;
+            document.getElementById('valArmes').innerHTML = data.armes;
+            document.getElementById('valPlans').innerHTML = data.plans;
+            document.getElementById('valDriver').innerHTML = data.driver;
+            document.getElementById('valCP').innerHTML = data.cp;
+            display.style.display = 'block';
+        } else {
+            display.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
