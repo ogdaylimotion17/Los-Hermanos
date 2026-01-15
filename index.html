@@ -14,6 +14,32 @@
     header nav a { color: #e63946; margin-right: 20px; text-decoration: none; font-weight: 500; }
     header nav a:hover { text-decoration: underline; }
 
+    /* Badge avec cercle vert */
+    #onlineStatus {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 200;
+    }
+
+    #onlineStatus .greenDot {
+      width: 12px;
+      height: 12px;
+      background: #28a745; /* vert */
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
     .hero {
       height: 70vh;
       background: url('https://i.ibb.co/wZXpX3zn/gggg.jpg') center/cover no-repeat;
@@ -22,7 +48,8 @@
     }
     .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
     .hero h1 { position: relative; color: #e63946; font-size: 4rem; z-index: 1; text-shadow: 0 0 20px rgba(230,57,70,0.9); margin-bottom: 15px; }
-    .hero p { position: relative; z-index: 1; font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.6); }
+    .hero p { position: relative; z-index: 1; font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.6); margin-bottom: 20px; }
+    .hero .cta { z-index: 1; }
 
     section { padding: 60px 10%; }
     h1,h2,h3 { color: #e63946; margin-bottom: 20px; }
@@ -58,6 +85,11 @@
   </style>
 </head>
 <body>
+
+<!-- Badge avec cercle vert -->
+<div id="onlineStatus">
+  <span class="greenDot"></span> Personnes connectées : 5
+</div>
 
 <header>
   <nav>
@@ -222,3 +254,4 @@ ${data.get('why')}
 
 </body>
 </html>
+
